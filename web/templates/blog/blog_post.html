@@ -4,14 +4,14 @@
     <meta name="description" content="{{ blog_post.description }}">
     <meta property="og:title" content="{{blog_post.title}}">
     <meta property="og:description" content="{{blog_post.description}}">
-    <meta property="og:image" content="{{ blog_post.thumbnail.url }}">
-    <meta property="og:url" content="{{ blog_post.get_absolute_url}}">
+    <meta property="og:image" content="{{request.scheme}}://{{request.META.HTTP_HOST}}/{{ blog_post.thumbnail.url }}">
+    <meta property="og:url" content="{{request.scheme}}://{{request.META.HTTP_HOST}}/{{ blog_post.get_absolute_url}}">
     <meta property="og:site_name" content="The Packet Wizards">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:creator" content="@castromonteiro">
     <meta name="twitter:title" content="{{blog_post.title}}">
     <meta name="twitter:description" content="{{blog_post.description}}">
-    <meta name="twitter:image" content="{{ blog_post.thumbnail.url }}">
+    <meta name="twitter:image" content="{{request.scheme}}://{{request.META.HTTP_HOST}}/{{ blog_post.thumbnail.url }}">
     <meta name="twitter:image:alt" content="{{blog_post.title}}">
 {% endblock %}
 {% block content %}
