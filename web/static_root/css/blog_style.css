@@ -1,0 +1,613 @@
+/*
+    Blog Style
+*/
+@import url("https://fonts.googleapis.com/css?family=Play&Karla:900,700|Montserrat:400&display=swap");
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #fafafa;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1em;
+    letter-spacing: -.025em;
+    font-family: 'Karla', sans-serif;
+    font-weight: 900;
+    color: #000;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+#sidebar {
+    width: 80px;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #343a40;
+    color: #fff;
+    transition: all 0.3s;
+    position: sticky;
+    text-align: center;
+}
+
+#sidebar.collapsed {
+    display: none;
+}
+
+.profile img {
+    padding: 1rem;
+}
+
+.sidebar-logo {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#sidebar .sidebar-header {
+    padding: .8rem;
+    background: #343a40;
+    top: 0;
+}
+
+#sidebar ul li.social-network a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.85em;
+    display: block;
+}
+
+#sidebar ul li.social-network a i {
+    margin-right: 0;
+    display: block;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+#sidebar ul li.social-network a:hover {
+    color: #343a40;
+    background: #fff;
+}
+
+
+.fa-rss-square, .fa-github, .fa-linkedin {
+    font-size: 2rem;
+}
+
+/* ---------------------------------------------------
+    Navbar STYLE
+----------------------------------------------------- */
+.navbar {
+    padding: 15px 10px;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.1);
+}
+
+#navbar-md-lg {
+    display: block;
+}
+
+#navbar-sm {
+    display: none;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.navbar-brand {
+    display: none;
+}
+
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #969696;
+    margin: 20px 0;
+}
+
+/* ---------------------------------------------------
+    Content STYLE
+----------------------------------------------------- */
+
+#content {
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.1);
+}
+
+.btn-read-more {
+    color: #29abe2;
+    border-color: #29abe2;
+}
+
+.btn-read-more:hover {
+    background-color: #29abe2;
+    border-color: #29abe2;
+}
+
+.post-header-logo {
+    display: inline;
+    height: 4rem;
+    width: 4rem;
+}
+
+a .post-category {
+    color: #fafafa;
+    background: #000;
+}
+
+a .post-series {
+    color: #000;
+    background: #fafafa;
+}
+
+a:hover .post-category .post-series {
+    text-decoration: underline;
+}
+
+.post-date, .post-category, .post-series, .post-read-time {
+    font-family: 'Play', sans-serif;
+    font-size: .8rem;
+    line-height: 1.18em;
+    letter-spacing: .045em;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #000;
+    text-align: justify;
+    display: inline-block;
+    padding: 0.7rem;
+}
+
+.post-thumbnail {
+    display: inline;
+    margin: 0.5rem auto;
+    border-radius: 5px;
+
+}
+
+.post-title {
+    margin-top: 35px;
+    text-align: justify;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #54575c;
+}
+
+.post-description, .post-highlight {
+    padding-top: .9rem;
+    text-align: justify;
+    font-size: 1.1rem;
+    line-height: 2rem;
+    letter-spacing: .006em;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.post-content {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    letter-spacing: .01rem;
+    color: #1a1a1a;
+    overflow-x: auto;
+    text-align: justify;
+}
+
+.post-content h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 2rem;
+    font-weight: 700;
+    text-align: justify;
+}
+
+
+.post-content a,
+.post-content a:hover,
+.post-content a:focus {
+    color: #29abe2;
+    transition: all 0.3s;
+    text-decoration: underline;
+}
+
+.post-content figure figcaption {
+    text-align: center; !important;
+    font-size: smaller; !important;
+    font-style: italic; !important;
+}
+
+.post-content blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #29abe2;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+blockquote:before {
+    color: #29abe2;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote:after {
+    color: #29abe2;
+    content: close-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote p {
+    display: inline;
+}
+
+
+.post-content .pullquote:before {
+    /* Reset metrics. */
+    padding: 1rem;
+    border: none;
+
+    /* Content */
+    content: attr(data-pullquote);
+
+    /* Pull out to the right, modular scale based margins. */
+    float: right;
+    width: 20rem;
+    margin: 12px 14px 12px 14px;
+
+    /* Baseline correction */
+    position: relative;
+    top: 5px;
+
+    /* Typography (30px line-height equals 25% incremental leading) */
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    text-align: left;
+    color: #29abe2;
+}
+
+.post-content .pullquote-left:before {
+    /* Reset metrics. */
+    padding: 1rem;
+    border: none;
+
+    /* Content */
+    content: attr(data-pullquote);
+
+    /* Pull out to the left, modular scale based margins. */
+    float: left;
+    width: 20rem;
+    margin: 12px 14px 12px 14px;
+
+    /* Baseline correction */
+    position: relative;
+    top: 5px;
+
+    /* Typography (30px line-height equals 25% incremental leading) */
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    text-align: left;
+    color: #29abe2;
+}
+
+.post-content img {
+    border-radius: 5px;
+    max-width: 600px;
+    max-height: 600px;
+    display: block;
+    margin: 0 auto;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 767px) {
+
+    /* Sidebar Contents */
+    #sidebar {
+        display: none;
+    }
+
+    #sidebarCollapse {
+        display: none;
+    }
+
+    /* Navbar Contents */
+    .navbar {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 2px;
+        margin-bottom: 40px;
+
+    }
+
+    #navbar-md-lg {
+        display: none;
+    }
+
+    #navbar-sm {
+        display: block;
+    }
+
+    .navbar-brand {
+        display: block;
+    }
+
+    .navbar-brand img {
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        max-height: 60px;
+        object-fit: contain;
+
+    }
+
+    #navbarSupportedContent {
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+
+    /* Main Content */
+    #content {
+        padding: 20px;
+        min-height: 100vh;
+        transition: all 0.3s;
+        width: 100%;
+    }
+
+    .breadcrumb {
+        padding: 15px 10px;
+        background: #fff;
+        border: none;
+        border-radius: 0;
+        margin-bottom: 20px;
+        box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-read-more {
+        color: #29abe2;
+        border-color: #29abe2;
+    }
+
+    .btn-read-more:hover {
+        background-color: #29abe2;
+        border-color: #29abe2;
+    }
+
+    .post-header-logo {
+        display: inline;
+        height: 4rem;
+        width: 4rem;
+    }
+
+    a .post-category {
+        color: #fafafa;
+        background: #000;
+    }
+
+    a .post-series {
+        color: #000;
+        background: #fafafa;
+    }
+
+    a:hover .post-category .post-series {
+        text-decoration: underline;
+    }
+
+    .post-date, .post-category, .post-series, .post-read-time {
+        font-family: 'Play', sans-serif;
+        font-size: .8rem;
+        line-height: 1.18em;
+        letter-spacing: .045em;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #000;
+        text-align: justify;
+        display: inline-block;
+        padding: 0.5rem;
+    }
+
+    .post-thumbnail {
+        display: inline;
+        margin-bottom: 0.4rem;
+    }
+
+    .post-title {
+        margin-top: 35px;
+        text-align: center;
+        font-size: 2.3rem;
+        font-weight: 900;
+        color: #54575c;
+    }
+
+    .post-description, .post-highlight {
+        padding-top: .9rem;
+        text-align: justify;
+        font-size: 1.0rem;
+        line-height: 2rem;
+        letter-spacing: .006em;
+        font-family: 'Karla', sans-serif;
+        font-weight: 400;
+        font-style: italic;
+    }
+
+    .post-content {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1.3rem;
+        letter-spacing: .006em;
+        color: #1a1a1a;
+        overflow-x: auto;
+        text-align: justify;
+    }
+
+    .post-content img {
+        max-width: 100%;
+    }
+
+    .post-content h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 2rem;
+        font-weight: 700;
+        text-align: center;
+    }
+
+
+    .post-content a,
+    .post-content a:hover,
+    .post-content a:focus {
+        color: #29abe2;
+        transition: all 0.3s;
+        text-decoration: underline;
+    }
+
+
+    .post-content blockquote {
+        background: #f9f9f9;
+        border-left: 10px solid #29abe2;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        quotes: "\201C" "\201D" "\2018" "\2019";
+    }
+
+    blockquote:before {
+        color: #29abe2;
+        content: open-quote;
+        font-size: 1.4rem;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+    }
+
+    blockquote:after {
+        color: #29abe2;
+        content: close-quote;
+        font-size: 1.4rem;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+    }
+
+    blockquote p {
+        display: inline;
+    }
+
+    .post-content .pullquote:before {
+        /* Reset metrics. */
+        padding: 1rem;
+        border: none;
+
+        /* Content */
+        content: attr(data-pullquote);
+
+        /* Pull out to the right, modular scale based margins. */
+        float: bottom;
+        width: 100%;
+        margin-left: 10rem;
+
+        /* Baseline correction */
+        position: relative;
+        top: 5px;
+
+        /* Typography (30px line-height equals 25% incremental leading) */
+        font-size: 1.3rem;
+        line-height: 2rem;
+        text-align: left;
+        color: #29abe2;
+    }
+
+
+    .post-content .pullquote-left:before {
+        /* Reset metrics. */
+        padding: 1rem;
+        border: none;
+
+        /* Content */
+        content: attr(data-pullquote);
+        /* Pull out to the right, modular scale based margins. */
+        float: bottom;
+        width: 100%;
+        margin-left: 0;
+
+        /* Baseline correction */
+        position: relative;
+        top: 5px;
+
+        /* Typography (30px line-height equals 25% incremental leading) */
+        font-size: 1.3rem;
+        line-height: 2rem;
+        text-align: left;
+        color: #29abe2;
+    }
+
+    .line {
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px dashed #969696;
+        margin-bottom: 10px;
+    }
+
+    .back-to-top {
+        font-size: .5rem;
+    }
+
+    .btn-read-more {
+        font-size: .8rem;
+    }
+
+}
+
+@media (max-width: 1400px) {
+    #content {
+        padding: 20px;
+        min-height: 100vh;
+        transition: all 0.3s;
+        width: 100%;
+        margin-left: 0;
+    }
+
+}

@@ -1,0 +1,19 @@
+{% extends 'blog/index.html' %}
+{% load static %}
+
+{% block extend_head %}
+    <meta name="description" content="{{description}}">
+
+{% endblock %}
+
+{% block breadcumb %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/blog"> <i class="fas fa-home"></i></a></li>
+            {% block extend_breadcumb %}
+                <li class="breadcrumb-item"><a href="#">Categoria</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ category }}</li>
+            {% endblock %}
+        </ol>
+    </nav>
+{% endblock %}

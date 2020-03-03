@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158972364-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-158972364-1');
+    </script>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow"/>
+    {% block extend_head %}
+        <meta property="og:title" content="The Packet Wizards">
+        <meta property="og:description" content="O The Packet Wizards tem como objetivo, compartilhar conhecimento, seja este
+        técnico (hard-skill) ou o que eu chamo de humano (soft-skill) e ir muito além da engenharia de rede.">
+        <meta property="og:image" content="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static 'img/logo.png' %}">
+        <meta property="og:url" content="https://www.thepacketwizards.com/blog">
+        <meta property="og:site_name" content="The Packet Wizards">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:creator" content="@castromonteiro">
+        <meta name="twitter:title" content="The Packet Wizards">
+        <meta name="twitter:description" content="O The Packet Wizards tem como objetivo, compartilhar conhecimento, seja este
+        técnico (hard-skill) ou o que eu chamo de humano (soft-skill) e ir muito além da engenharia de rede.">
+        <meta name="twitter:image" content="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static 'img/logo.png' %}">
+        <meta name="twitter:image:alt" content="The Packet Wizards">
+    {% endblock %}
+    <title>{{ title }}</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/blog_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/codehilite.css' %}">
+    <link rel="icon" href="{% static 'img/logo.png' %}"/>
+</head>
+
+<body>
+<!-- Navigation Bar for Small Devices -->
+<nav id="navbar-sm" class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}"
+                                              alt="The Packet Wizards"></a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#about-me">Sobre</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    {% block sidebar %}
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="/"><img class="sidebar-logo img-responsive" src="{% static 'img/logo.png' %}" alt="Inicio"></a>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="profile">
+                    <a href="/#about-me" target="_blank" rel="noopener noreferrer"><img
+                            class="img-fluid rounded-circle mx-auto"
+                            src="{% static 'img/profile.jpg' %}"
+                            alt="Sobre Mim">
+                    </a>
+                </li>
+                <li class="social-network">
+                    <a href="https://github.com/decastromonteiro" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                        Github
+                    </a>
+                </li>
+                <li class="social-network">
+                    <a href="https://www.linkedin.com/in/leonardo-de-castro-monteiro/" target="_blank"
+                       rel="noopener noreferrer"><i class="fab fa-linkedin"></i>
+                        Linkedin
+                    </a>
+                </li>
+                <li class="social-network">
+                    <a href="/blog/rss" target="_blank" rel="noopener noreferrer"><i class="fas fa-rss-square"></i>
+                        RSS Feed
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    {% endblock %}
+    <div id="content">
+        <!-- Navigation -->
+        {% block navigation %}
+            <nav id="navbar-md-lg" class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-secondary">
+                        <i class="fas fa-align-left"></i>
+                    </button>
+                    <span class="navbar-brand"><img src="{% static 'img/logo.png' %}" alt="The Packet Wizards"></span>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Alterna navegação">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link header-link" href="/">Inicio</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link header-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link header-link" href="/#about-me">Sobre</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            {% block breadcumb %}
+            {% endblock %}
+        {% endblock %}
+        <!-- Content -->
+        {% block content %}
+        {% endblock %}
+        {% block pagination %}
+            {% if blog_list.paginator.num_pages > 1 %}
+                <div>
+                    <span>
+                        {% if blog_list.has_previous %}
+                            <a class="btn btn-read-more" href="?page=1">Primeira</a>
+                            <a class="btn btn-read-more" href="?page={{ blog_list.previous_page_number }}">Anterior</a>
+                        {% endif %}
+
+                        <span>
+                            Página {{ blog_list.number }} de {{ blog_list.paginator.num_pages }}.
+                        </span>
+
+                        {% if blog_list.has_next %}
+                            <a class="btn btn-read-more" href="?page={{ blog_list.next_page_number }}">Próxima</a>
+                            <a class="btn btn-read-more" href="?page={{ blog_list.paginator.num_pages }}">Última</a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% endif %}
+        {% endblock %}
+        {% block back_to_top %}
+            <a id="back-to-top" href="#" class="btn btn-outline-secondary btn-lg back-to-top float-right"
+               role="button"><i
+                    class="fas fa-chevron-up"></i></a>
+        {% endblock %}
+        <!--Back to Top-->
+    </div>
+
+</div>
+
+<!-- Javascript -->
+{% block default_js %}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5550e66529.js" crossorigin="anonymous"></script>
+{% endblock %}
+<!-- Custom Javascript -->
+{% block custom_js %}
+    <script src="{% static 'js/sidebar_collapse.js' %}"></script>
+    <script src="{% static 'js/backtotop.js' %}"></script>
+{% endblock %}
+
+</body>
+
+</html>

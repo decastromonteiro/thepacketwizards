@@ -1,0 +1,80 @@
+{% extends "index/base.html" %}
+{% load static %}
+
+<!--- Image Slider -->
+{% block image_slider %}
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{% static 'img/primary_background.png' %}" alt="The Packet Wizards">
+                <div class="carousel-caption">
+                    <img src="{% static 'img/header_logo.svg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock image_slider %}
+<!--- Blog Articles Highlight -->
+{% block articles_highlight %}
+    <div class="container-fluid">
+        <div class="row blog-articles text-center">
+            <div class="col-12">
+                <h1 id="recent-articles" class="headline">Artigos em Destaque</h1>
+            </div>
+            <hr>
+        </div>
+    </div>
+{% endblock articles_highlight %}
+<!--- Blog Cards Section -->
+{% block article_cards %}
+    <div class="container-fluid">
+        <div class="row padding">
+            <div class="card-deck">
+                {% for blog_post in blog_list %}
+                    <div class="card">
+                        {% if blog_post.thumbnail %}
+                            <img class="card-img-top" src="{{ blog_post.thumbnail.url }}" alt="">
+                        {% else %}
+                            <img class="card-img-top" src="{% static 'img/team3.png' %}" alt="">
+                        {% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title">{{ blog_post.title }}</h4>
+                            <p class="card-text">{{ blog_post.description|safe }}</p>
+                            <a href="/blog/{{ blog_post.slug }}" class="btn btn-outline-secondary">Leia Mais</a>
+
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock article_cards %}
+<!--- About Section -->
+{% block about_section %}
+    <div class="container-fluid">
+        <div class="row padding text-center">
+            <div class="col-12">
+                <h1 id="about-me" class="headline">Sobre Mim</h1>
+            </div>
+            <div class="col-12">
+                <img class="img-fluid rounded-circle mx-auto d-block" src="{% static 'img/profile.jpg' %}" alt="">
+            </div>
+            <div id="about-me-text" class="col-12 mx-auto d-block">
+                <p>Sou formado em engenharia de telecomunicações pela Universidade do Estado do Rio de Janeiro e
+                    trabalho
+                    com solução de redes de dados móveis (Packet Core).</p>
+                <p>Como engenheiro, enfrento diversos desafios
+                    em
+                    meu trabalho e parte destes desafios é desenvolver soluções inteligentes para otimizar e garantir o
+                    futuro das redes de diversos clientes.</p>
+                <p>Procuro sempre inovar em meu ambiente de trabalho, seja criando ferramentas de automação com Python,
+                    seja
+                    revisando processos ou até mesmo otimizando-os.</p>
+                <p>Este blog tem como objetivo, compartilhar conhecimento, seja este técnico (hard-skill) ou não
+                    (soft-skill)
+                    e ir muito além da engenharia de rede.</p>
+            </div>
+        </div>
+    </div>
+{% endblock about_section %}

@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block breadcumb %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-6">
+        {{ form.content }}
+    </div>
+    <div class="col-md-6">
+        {{ form.media }}
+    </div>
+
+{% endblock %}

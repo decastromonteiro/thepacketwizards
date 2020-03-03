@@ -1,0 +1,20 @@
+{% extends "index/base.html" %}
+{% load static %}
+{% block image_slider %}
+    <div class="container-fluid">
+        <div class="row padding text-center">
+            <div class="col-12">
+                <h1 id="404" class="headline">HTTP 404 - Conteúdo não encontrado</h1>
+            </div>
+            <div class="col-12">
+                <img class="img-fluid rounded-circle mx-auto d-block" src="{% static 'img/profile.jpg' %}" alt="">
+            </div>
+            <div id="error-text" class="col-12 mx-auto d-block">
+                <h1>A página que você está buscando não pôde ser encontrada.</h1>
+            </div>
+        </div>
+    </div>
+
+{% endblock image_slider %}
+
+
