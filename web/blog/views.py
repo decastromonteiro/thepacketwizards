@@ -38,6 +38,29 @@ def create_blog_post(request):
     return render(request, "blog/form.html", context)
 
 
+# DRAFT
+
+@login_required(login_url='/blog')
+def draft_blog_index(request):
+    title = "Drafts - The Packet Wizards"
+    qs = BlogPost.objects.all().filter(published=False)
+    paginator = Paginator(qs, 5)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    context = {"title": title, 'blog_list': posts}
+    return render(request, "blog/draft_index.html", context)
+
+
+@login_required(login_url='/blog')
+def draft_blog_post(request, slug):
+    try:
+        qs = BlogPost.objects.get(slug=slug)
+        context = {"title": qs.title, 'blog_post': qs}
+        return render(request, "blog/draft_blog_post.html", context)
+    except Exception:
+        return redirect('/blog')
+
+
 def blog_post(request, slug):
     try:
         qs = BlogPost.objects.get(slug=slug)

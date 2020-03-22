@@ -9,7 +9,7 @@ class LatestEntriesFeed(Feed):
     description = "Veja os últimos artigos publicos no The Packet Wizards Blog!"
 
     def items(self):
-        return BlogPost.objects.order_by('-publish_date')[:3]
+        return BlogPost.objects.order_by('-publish_date').filter(published=True)[:3]
 
     def item_title(self, item):
         return item.title

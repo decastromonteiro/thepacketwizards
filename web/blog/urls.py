@@ -15,17 +15,20 @@ Including another URLconf
 """
 
 from django.urls import path
-
-from blog.feed import LatestEntriesFeed
-from blog.views import (blog_index,
-                        blog_post,
-                        blog_category,
-                        blog_series, create_blog_post)
+from .feed import LatestEntriesFeed
+from .views import (draft_blog_index,
+                    blog_index,
+                    draft_blog_post,
+                    blog_post,
+                    blog_category,
+                    blog_series, create_blog_post)
 
 urlpatterns = [
     path("", blog_index),
+    path("draft/", draft_blog_index),
     path('create/', create_blog_post),
     path("<slug:slug>/", blog_post, name='blogpost'),
+    path("draft/<slug:slug>/", draft_blog_post, name='blogpost'),
     path("category/<slug:category>", blog_category),
     path("series/<slug:series>", blog_series),
     path('rss', LatestEntriesFeed())
