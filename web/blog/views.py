@@ -65,7 +65,8 @@ def blog_post(request, slug):
     try:
         qs = BlogPost.objects.get(slug=slug)
         if qs.published and qs.publish_date < timezone.now():
-            context = {"title": qs.title, 'blog_post': qs}
+            tag_list = [tag.tag for tag in qs.tags.all()]
+            context = {"title": qs.title, 'blog_post': qs, 'tags': tag_list}
             return render(request, "blog/blog_post.html", context)
         return redirect('/blog')
     except Exception:
@@ -97,7 +98,7 @@ def blog_series(request, series):
             series__slug__exact=series,
             published=True,
             publish_date__lte=now
-        )
+        ).order_by("-publish_date")
         if qs:
             context = {"title": 'Series: {}'.format(series),
                        'blog_list': qs,

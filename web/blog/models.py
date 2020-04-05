@@ -40,11 +40,19 @@ class BlogCategory(models.Model):
         return self.title
 
 
+class Tag(models.Model):
+    tag = models.CharField(max_length=80)
+
+    def __str__(self):
+        return self.tag
+
+
 class BlogPost(models.Model):
     title = models.CharField(max_length=80)
     slug = models.SlugField(unique=True, editable=True, max_length=100, blank=True, null=True)
     description = models.CharField(max_length=180)
     thumbnail = models.ImageField(blank=True, null=True)
+    thumbnail_alt_text = models.CharField(max_length=80, null=True, blank=True)
     content = MarkdownxField()
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -58,6 +66,7 @@ class BlogPost(models.Model):
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, default=1)
     series = models.ForeignKey(BlogSeries, on_delete=models.SET_NULL, null=True, blank=True)
     category = models.ForeignKey(BlogCategory, on_delete=models.SET_NULL, null=True)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def formatted_markdown(self):
         """
