@@ -1,17 +1,17 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 {% block extend_head %}
-    <link rel="canonical" href={{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ blog_post.get_absolute_url }}"/>
+    <link rel="canonical" href=https://{{ request.META.HTTP_HOST }}{{ blog_post.get_absolute_url }}"/>
     <meta name="description" content="{{ blog_post.description }}"/>
     <meta property="og:title" content="{{ blog_post.title }}"/>
     <meta property="og:description" content="{{ blog_post.description }}"/>
     <meta property="og:image"
-          content="{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ blog_post.thumbnail.url }}"/>
+          content="https://{{ request.META.HTTP_HOST }}{{ blog_post.thumbnail.url }}"/>
     <meta property="og:image:secure_url "
-          content="{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ blog_post.thumbnail.url }}"/>
+          content="https://{{ request.META.HTTP_HOST }}{{ blog_post.thumbnail.url }}"/>
     <meta property="og:image:alt" content="{{ blog_post.thumbnail_alt_text }}"/>
     <meta property="og:url"
-          content="{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ blog_post.get_absolute_url }}"/>
+          content="https://{{ request.META.HTTP_HOST }}{{ blog_post.get_absolute_url }}"/>
     <meta property="og:site_name" content="The Packet Wizards"/>
     <meta property="og:type" content="article"/>
     <meta property="og:locale" content="pt_BR"/>
@@ -20,7 +20,7 @@
     <meta name="twitter:title" content="{{ blog_post.title }}"/>
     <meta name="twitter:description" content="{{ blog_post.description }}"/>
     <meta name="twitter:image"
-          content="{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ blog_post.thumbnail.url }}"/>
+          content="https://{{ request.META.HTTP_HOST }}{{ blog_post.thumbnail.url }}"/>
     <meta name="twitter:image:alt" content="{{ blog_post.thumbnail_alt_text }}"/>
     {% for tag in tags %}
     <meta property="article:tag" content="{{ tag }}"/>
