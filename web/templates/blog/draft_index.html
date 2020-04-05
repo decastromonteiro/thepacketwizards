@@ -22,7 +22,7 @@
                         </div>
                         <img class="card-img-top" src="{{ blog_post.thumbnail.url }}" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">{{ blog_post.title }}</h5>
+                            <h1 class="card-title">{{ blog_post.title }}</h1>
                             <h6 class="card-subtitle mb-2"><i class="fas fa-book-reader"><span
                                     class="post-read-time">{{ blog_post.read_time }} minutos</span></i></h6>
                             <p class="card-text">{{ blog_post.get_truncated_content|safe }}</p>
