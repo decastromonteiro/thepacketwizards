@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 {% block extend_head %}
-    <link rel="canonical" href=https://{{ request.META.HTTP_HOST }}{{ blog_post.get_absolute_url }}">
+    <link rel="canonical" href="https://{{ request.META.HTTP_HOST }}{{ blog_post.get_absolute_url }}">
     <meta name="description" content="{{ blog_post.description }}">
     <meta property="og:title" content="{{ blog_post.title }}">
     <meta property="og:description" content="{{ blog_post.description }}">
