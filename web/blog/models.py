@@ -66,7 +66,7 @@ class BlogPost(models.Model):
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, default=1)
     series = models.ForeignKey(BlogSeries, on_delete=models.SET_NULL, null=True, blank=True)
     category = models.ForeignKey(BlogCategory, on_delete=models.SET_NULL, null=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True, null=True)
 
     def formatted_markdown(self):
         """
