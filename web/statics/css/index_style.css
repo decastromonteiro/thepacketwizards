@@ -97,13 +97,13 @@ footer img {
     margin: 0 auto;
 }
 
-.fa-github, .fa-linkedin, .fa-rss-square {
+.fa-github, .fa-linkedin, .fa-rss-square, .fa-twitter {
     font-size: 3em;
     margin: 1rem;
     color: white;
 }
 
-.fa-github:hover, .fa-linkedin:hover, .fa-rss-square:hover {
+.fa-github:hover, .fa-linkedin:hover, .fa-rss-square:hover, .fa-twitter:hover {
     font-size: 3.3em;
     color: #d5d5d5;
 }
