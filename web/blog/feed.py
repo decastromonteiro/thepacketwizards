@@ -1,15 +1,16 @@
 from django.contrib.syndication.views import Feed
 from django.urls import reverse
 from .models import BlogPost
+from django.utils import timezone
 
 
 class LatestEntriesFeed(Feed):
     title = "The Packet Wizards - Seu blog de engenharia de redes e muito mais!"
     link = "/rss/"
-    description = "Veja os últimos artigos publicos no The Packet Wizards Blog!"
+    description = "Veja os últimos artigos públicos no The Packet Wizards Blog!"
 
     def items(self):
-        return BlogPost.objects.order_by('-publish_date').filter(published=True)[:3]
+        return BlogPost.objects.order_by('-publish_date').filter(published=True, publish_date__lte=timezone.now())
 
     def item_title(self, item):
         return item.title
