@@ -1,51 +1,16 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from django.utils.text import slugify
+from .Author import Author
+from .BlogSeries import BlogSeries
+from .BlogCategory import BlogCategory
+from .BlogTag import BlogTag
 
 import re
 import math
 from django.utils.html import strip_tags
-
-
-class Author(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_picture = models.ImageField()
-
-    def get_name(self):
-        return '{} {}'.format(self.user.first_name, self.user.last_name)
-
-    def __str__(self):
-        return self.get_name()
-
-
-# Create your models here.
-class BlogSeries(models.Model):
-    title = models.CharField(max_length=80)
-    description = models.TextField(max_length=180, null=True, blank=True)
-    slug = models.SlugField(unique=True, max_length=100)
-
-    def __str__(self):
-        return self.title
-
-
-class BlogCategory(models.Model):
-    title = models.CharField(max_length=80)
-    slug = models.SlugField(max_length=100)
-    description = models.CharField(max_length=180, null=True, blank=True)
-
-    def __str__(self):
-        return self.title
-
-
-class Tag(models.Model):
-    tag = models.CharField(max_length=80)
-
-    def __str__(self):
-        return self.tag
-
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=80)
@@ -66,7 +31,7 @@ class BlogPost(models.Model):
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, default=1)
     series = models.ForeignKey(BlogSeries, on_delete=models.SET_NULL, null=True, blank=True)
     category = models.ForeignKey(BlogCategory, on_delete=models.SET_NULL, null=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField(BlogTag, blank=True)
 
     def formatted_markdown(self):
         """

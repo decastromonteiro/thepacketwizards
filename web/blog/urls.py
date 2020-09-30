@@ -31,5 +31,5 @@ urlpatterns = [
     path("draft/<slug:slug>/", draft_blog_post, name='draft_blogpost'),
     path("category/<slug:category>", blog_category),
     path("series/<slug:series>", blog_series),
-    path('rss', LatestEntriesFeed())
+    path('rss', LatestEntriesFeed()),
 ]

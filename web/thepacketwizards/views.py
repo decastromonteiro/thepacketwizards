@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from blog.models import BlogPost
+from blog.models.BlogPost import BlogPost
 from django.utils import timezone
 
 def home_page(request):
