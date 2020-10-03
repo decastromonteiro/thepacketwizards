@@ -1,8 +1,10 @@
 /env/web.prod
 /env/db.prod
+/env/twitter
+/web/blog/migrations/
 dh-param/dhparam-2048.pem
 *.pyc
 *.sqlite3
 __pycache__
 *.sqlite3
-web/blog/migrations/
+/web/static_root/

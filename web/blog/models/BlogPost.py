@@ -7,10 +7,13 @@ from .Author import Author
 from .BlogSeries import BlogSeries
 from .BlogCategory import BlogCategory
 from .BlogTag import BlogTag
+from .TwitterPost import TwitterPost
 
 import re
 import math
 from django.utils.html import strip_tags
+from uuid import uuid4
+
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=80)
@@ -26,6 +29,8 @@ class BlogPost(models.Model):
     publish_date = models.DateTimeField(null=True, blank=True)
     series_index = models.IntegerField(null=True, blank=True)
     read_time = models.IntegerField(null=True, blank=True)
+    twitter_uuid = models.UUIDField(null=True, blank=True)
+    twitter_content = models.TextField(max_length=280, null=True, blank=True)
 
     # Relations
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, default=1)
@@ -43,9 +48,9 @@ class BlogPost(models.Model):
         """
         Get content between ::begin:: and ::more:: Tags and return it.
         """
-        pattern = re.compile(r'(?<=::begin::)(.*)(?=::more::)', re.DOTALL)
+        pattern = re.compile(r"(?<=::begin::)(.*)(?=::more::)", re.DOTALL)
         truncated = self.content[:300]
-        if '::more::' in self.content:
+        if "::more::" in self.content:
             truncated = re.search(pattern, self.content)
             if truncated:
                 return markdownify(truncated.group())
@@ -56,15 +61,18 @@ class BlogPost(models.Model):
         Get content field and rip it off from ::more:: and ::begin:: Tags
         Return Content without those tags.
         """
-        return self.content.replace('::more::', '').replace('::begin::', '')
+        return self.content.replace("::more::", "").replace("::begin::", "")
 
     def get_read_time(self):
-        word_count = len(re.findall(r'\w+', strip_tags(self.formatted_markdown())))
+        word_count = len(re.findall(r"\w+", strip_tags(self.formatted_markdown())))
         read_time_min = math.ceil(word_count / 200)  # 200 Words Per Minute
         return read_time_min
 
     def get_absolute_url(self):
-        return reverse('blogpost', args=[self.slug])
+        return reverse("blogpost", args=[self.slug])
+
+    def update_twitter_content(self):
+        self.twitter_content = self.twitter_content.replace("{{post}}", self.get_absolute_url())
 
     def __str__(self):
         return self.title
@@ -72,6 +80,20 @@ class BlogPost(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = slugify(self.title)
+            self.twitter_uuid = uuid4()
+
+        if self.twitter_content:
+            if self.published:
+                twitter_update = TwitterPost.objects.get(uuid=self.twitter_uuid)
+                if twitter_update:
+                    twitter_update.content = self.update_twitter_content()
+                    twitter_update.publish_date = self.publish_date
+                else:
+                    twitter_update = TwitterPost(
+                        uuid=self.twitter_uuid, content=self.update_twitter_content(), publish_date=self.publish_date
+                    )
+                twitter_update.save()
+
         self.read_time = self.get_read_time()
 
         super().save(*args, **kwargs)

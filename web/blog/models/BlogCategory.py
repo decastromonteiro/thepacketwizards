@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class BlogCategory(models.Model):
     title = models.CharField(max_length=80)
     slug = models.SlugField(max_length=100)

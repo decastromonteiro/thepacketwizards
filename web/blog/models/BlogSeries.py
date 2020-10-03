@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class BlogSeries(models.Model):
     title = models.CharField(max_length=80)
     description = models.TextField(max_length=180, null=True, blank=True)
