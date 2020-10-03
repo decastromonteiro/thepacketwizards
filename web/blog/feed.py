@@ -1,6 +1,6 @@
 from django.contrib.syndication.views import Feed
 from django.urls import reverse
-from .models import BlogPost
+from .models.BlogPost import BlogPost
 from django.utils import timezone
 
 

@@ -14,7 +14,7 @@ ENV PYTHONUNBUFFERED 1
 
 # install dependencies
 COPY ./web/requirements/production.txt requirements.txt
-RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+RUN pip wheel --no-cache-dir --no-deps --require-hashes --wheel-dir  /usr/src/app/wheels -r requirements.txt
 
 #########
 # FINAL #

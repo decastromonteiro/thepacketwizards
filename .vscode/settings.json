@@ -1,0 +1,17 @@
+{
+  "python.pythonPath": "/home/decastromonteiro/.cache/pypoetry/virtualenvs/web-rWzZ982o-py3.8/bin/python",
+  "python.autoComplete.extraPaths": [
+    "../web",
+    "/home/decastromonteiro/.cache/pypoetry/virtualenvs/web-rWzZ982o-py3.8"
+  ],
+  "python.formatting.provider": "black",
+  "python.linting.flake8Enabled": true,
+  "files.insertFinalNewline": true,
+  "python.linting.flake8Args": [
+    "--max-line-length=119"
+  ],
+  "python.formatting.blackArgs": [
+    "--line-length",
+    "119"
+  ]
+}
