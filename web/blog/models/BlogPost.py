@@ -88,6 +88,7 @@ class BlogPost(models.Model):
                     twitter_update.content = self.twitter_content
                     twitter_update.publish_date = self.publish_date
                     twitter_update.post_url = self.get_absolute_url()
+                    twitter_update.save()
                 except TwitterPost.DoesNotExist:
                     twitter_update = TwitterPost(
                         uuid=self.twitter_uuid,
