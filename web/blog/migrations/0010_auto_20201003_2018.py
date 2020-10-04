@@ -6,38 +6,38 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0009_auto_20200405_1130'),
+        ("blog", "0009_auto_20200405_1130"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TwitterPost',
+            name="TwitterPost",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('uuid', models.UUIDField(unique=True)),
-                ('content', models.TextField(blank=True, max_length=280, null=True)),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('modified', models.DateTimeField(auto_now=True)),
-                ('publish_date', models.DateTimeField(blank=True, null=True)),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("uuid", models.UUIDField(unique=True)),
+                ("content", models.TextField(blank=True, max_length=280, null=True)),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                ("modified", models.DateTimeField(auto_now=True)),
+                ("publish_date", models.DateTimeField(blank=True, null=True)),
             ],
         ),
         migrations.RenameModel(
-            old_name='Tag',
-            new_name='BlogTag',
+            old_name="Tag",
+            new_name="BlogTag",
         ),
         migrations.AddField(
-            model_name='blogpost',
-            name='twitter_content',
+            model_name="blogpost",
+            name="twitter_content",
             field=models.TextField(blank=True, max_length=280, null=True),
         ),
         migrations.AddField(
-            model_name='blogpost',
-            name='twitter_uuid',
+            model_name="blogpost",
+            name="twitter_uuid",
             field=models.UUIDField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='blogpost',
-            name='tags',
-            field=models.ManyToManyField(blank=True, to='blog.Tag'),
+            model_name="blogpost",
+            name="tags",
+            field=models.ManyToManyField(blank=True, to="BlogTag"),
         ),
     ]

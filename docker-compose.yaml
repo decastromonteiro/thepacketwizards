@@ -31,7 +31,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: celery -A thepacketwizards worker -l info
+    command: celery -A thepacketwizards worker -l INFO
     env_file:
       - ./env/web.prod
       - ./env/twitter
