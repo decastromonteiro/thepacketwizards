@@ -77,6 +77,8 @@ class BlogPost(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = slugify(self.title)
+
+        if not self.twitter_uuid:
             self.twitter_uuid = uuid4()
 
         if self.twitter_content:
